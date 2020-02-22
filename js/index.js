@@ -1,47 +1,41 @@
 //selectors
-const searchInput = document.getElementById('search-artist');
+const searchInput = document.querySelector('#search-artist');
 const searchArtistForm = document.querySelector('.search-artist-form');
 const searchContainer = document.querySelector('.search-results');
 const whenFocus = document.querySelector('.whenfocus');
 
-//on focus
-searchInput.addEventListener('focus', (e) => {
-    e.preventDefault();
-    whenFocus.style.display = 'block';
-    document.addEventListener('click', (e) => {
-        if (e.target !== searchInput) {
-            whenFocus.style.display = 'none';
-        }
-    })
-});
 
-const searchTerm = '';
-const endpoint = 'https://www.theaudiodb.com/api/v1/json/1/'
-const searchMode = `search.php?s=${searchTerm}`;
 
-/*search results*/
-const searchResults = (data) => {
-    searchArtistForm.addEventListener('submit', (e) => {
-        searchTerm = searchInput.value.trim();
-        console.log(searchTerm);
-        let html = '';
-        let artists = data.artists;
-        artists.forEach(artist => {
-            console.log(artist);
-            html += `
-                <div>
-                    <h3>${artist.strArtist}</h3>
-                    <p>${artist.strBiographyEN}</p>
-                </div>
-                `;
-        });
-        searchContainer.innerHTML = html;
+
+
+function searchResults() {
+    searchArtistForm.addEventListener('submit', e => {
         e.preventDefault();
+        let searchTerm = searchArtistForm.search.value;
+        const searchResultsURL = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=${searchTerm}`;
+
+        //pushing data to dom
+        const showResult = (data) => {
+            let html;
+            let artists = data.artists;
+            if (artists === null) {
+                html = '<h2>Artist Not Found!</h2>'
+            } else {
+                artists.forEach(artist => {
+                    html += `<p>${artist.strArtist}</p>`
+                });
+            }
+            searchContainer.innerHTML = html;
+        }
+
+        //fetching data
+        fetch(searchResultsURL)
+            .then(res => res.json())
+            .then(data => {
+                showResult(data);
+            });
     });
+    searchArtistForm.reset();
 }
 
-
-/*fetch*/
-fetch(endpoint + searchMode)
-    .then(res => res.json())
-    .then(data => searchResults(data));
+searchResults();
