@@ -7,7 +7,7 @@ const whenFocus = document.querySelector('.whenfocus');
 
 
 
-
+//displaying search results
 function searchResults() {
     searchArtistForm.addEventListener('submit', e => {
         e.preventDefault();
@@ -19,13 +19,14 @@ function searchResults() {
             let html;
             let artists = data.artists;
             if (artists === null) {
-                html = '<h2>Artist Not Found!</h2>'
+                html = '<h2>Artist Not Found!</h2>';
             } else {
                 artists.forEach(artist => {
-                    html += `<p>${artist.strArtist}</p>`
+                    html = `<p>${artist.strArtist}</p>`;
                 });
             }
             searchContainer.innerHTML = html;
+            searchArtistForm.reset();
         }
 
         //fetching data
@@ -35,7 +36,5 @@ function searchResults() {
                 showResult(data);
             });
     });
-    searchArtistForm.reset();
 }
-
 searchResults();
