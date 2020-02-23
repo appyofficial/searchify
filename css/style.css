@@ -54,8 +54,7 @@
  }
 
  .search-results p {
-     padding: 20px;
-     line-height: 32px;
+     line-height: 25px;
  }
 
  .whenfocus {
@@ -66,4 +65,41 @@
      width: 100vw;
      height: 100vh;
      background: rgba(0, 0, 0, 0.5);
+ }
+
+ /**/
+ .artist-card{
+     display: flex; 
+     padding: 20px;
+     margin: 8px 8px 30px 8px;
+      
+     width: 100%; 
+     max-width: 650px;
+     
+     justify-content: space-between;
+     align-items: flex-start;
+     background-color: whitesmoke;
+    }
+
+ .artist-img{width: 100%; max-width: 200px;}
+ .artist-img img {width: 100%; height: auto;}
+ .artist-bio{flex: 1; padding-left: 20px;}
+ .artist-bio-header{
+     margin-bottom: 20px;
+ }
+ .artist-bio h3{font-size: 30px;}
+ .artist-links{
+     width: 100%;
+     display: flex;
+     justify-content: flex-start;
+ } 
+
+ .artist-links a{
+     margin-right: 15px;
+ }
+
+ .artist-bio-view-more{
+     padding: 8px 16px;
+     margin-top: 10px;
+     background-color: teal;
  }
