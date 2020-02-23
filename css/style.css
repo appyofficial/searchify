@@ -50,7 +50,12 @@
  }
 
  .search-results {
+     width: 100%;
      margin-top: 100px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
  }
 
  .search-results p {
@@ -79,6 +84,10 @@
      justify-content: space-between;
      align-items: flex-start;
      background-color: whitesmoke;
+
+     -webkit-box-shadow: 0px 0px 1px 0px rgba(145,145,145,1);
+     -moz-box-shadow: 0px 0px 1px 0px rgba(145,145,145,1);
+     box-shadow: 0px 0px 1px 0px rgba(145,145,145,1);
     }
 
  .artist-img{width: 100%; max-width: 200px;}
@@ -87,9 +96,10 @@
  .artist-bio-header{
      margin-bottom: 20px;
  }
- .artist-bio h3{font-size: 30px;}
+ .artist-bio-header h3{font-size: 30px; margin-bottom: 10px;}
  .artist-links{
      width: 100%;
+     margin-top: 5px;
      display: flex;
      justify-content: flex-start;
  } 
@@ -98,8 +108,15 @@
      margin-right: 15px;
  }
 
+ .artist-bio-sd{
+margin-bottom: 20px;
+ }
+
  .artist-bio-view-more{
-     padding: 8px 16px;
-     margin-top: 10px;
+     padding: 8px 16px;;
      background-color: teal;
+     color: white;
+     font-weight: bold;
+     text-decoration: none;
+     float: right;
  }
